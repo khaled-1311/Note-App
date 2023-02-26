@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="src/style.scss" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- main block -->
+      <main class="main">
+        <!-- add card block -->
+        <div class="card card__add add">
+          <div class="add__button">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <p class="add__content">Add new note</p>
+        </div>
+
+        <!-- note card block -->
+        <div class="card card__note note">
+          <div class="note__content">
+            <h2>Hello world 😆</h2>
+
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam
+              neque placeat nostrum molestiae voluptates itaque veritatis
+              voluptate repellendus, nemo numquam porro explicabo rem ducimus
+              omnis,
+            </p>
+          </div>
+          <div class="note__info">
+            <div class="note__info-date">April 3, 2022</div>
+            <div class="note__info-setting setting">
+              <span class="setting__icon">
+                <i class="fa-solid fa-ellipsis"></i>
+              </span>
+              <div class="setting__options">
+                <div
+                  class="setting__options-option setting__options-option--edit"
+                >
+                  <span><i class="fa-regular fa-pen-to-square"></i></span>
+                  <span>Edit</span>
+                </div>
+
+                <div
+                  class="setting__options-option setting__options-option--delete"
+                >
+                  <span><i class="fa-regular fa-trash-can"></i></span>
+                  <span>Delete</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <!-- overlay block -->
+    <div class="overlay"></div>
+    <!-- form block -->
+    <form class="form">
+      <div class="form__heading-box">
+        <h2 class="form__heading">Update a Note</h2>
+
+        <button class="form__close" type="button">
+          <i class="fa-regular fa-circle-xmark"></i>
+        </button>
+      </div>
+      <div class="form__input-box form__input-box--title">
+        <label for="title-text" class="form__label">Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title-text"
+          class="form__input form__input--title"
+        />
+      </div>
+      <div class="form__input-box form__input-box--description">
+        <label for="title-description" class="form__label">Description</label>
+        <textarea
+          type="text"
+          name="description"
+          id="title-description"
+          class="form__input form__input--description"
+          rows="5"
+        ></textarea>
+        <p class="form__description-error">Please fill out this field</p>
+      </div>
+
+      <div class="form__input-box form__input-box--button">
+        <button class="form__button" type="submit">Update Note</button>
+      </div>
+    </form>
+    <script src="src/index.js"></script>
+  </body>
+</html>
