@@ -6,6 +6,9 @@ const form = document.querySelector('.form');
 const main = document.querySelector('.main');
 const formHeading = document.querySelector('.form__button');
 const formButton = document.querySelector('.form__button');
+const popWindow = document.querySelector('.pop');
+const cancelBtn = document.querySelector('.pop__button--cancel');
+const deleteBtn = document.querySelector('.pop__button--delete');
 
 // Initilization Variables
 const monthArr = [
@@ -93,8 +96,18 @@ const toggleForm = function (formIsVisible) {
   }
 };
 
-//-------------------------
+// Close and open pop window function
+const togglePopWindow = function (popIsVisible) {
+  if (popIsVisible) {
+    overlay.classList.add('active-overlay');
+    popWindow.classList.add('active-pop');
+  } else {
+    overlay.classList.remove('active-overlay');
+    popWindow.classList.remove('active-pop');
+  }
+};
 
+//-------------------------
 // Render Note Markup to the screen
 const renderMarkup = function () {
   document.querySelectorAll('.card__note').forEach(note => note.remove());
@@ -146,9 +159,8 @@ renderMarkup();
 
 //-------------------------
 const deleteNote = function (id) {
-  notesData.splice(id, 1);
-  updateLocalStorage();
-  renderMarkup();
+  targetEditNote = id;
+  togglePopWindow(true);
 };
 
 const editNote = function (id) {
@@ -163,15 +175,35 @@ const editNote = function (id) {
   toggleForm(true);
 };
 
+//----------------------------------------------------------
 // Add Handler Events
-addButton.addEventListener('click', toggleForm.bind(this, true));
+addButton.addEventListener('click', () => {
+  inputValue();
+  toggleForm(true);
+});
 
-[closeFormBtn, overlay].forEach(element =>
-  element.addEventListener('click', toggleForm.bind(this, false))
-);
+closeFormBtn.addEventListener('click', toggleForm.bind(this, false));
+
+overlay.addEventListener('click', () => {
+  toggleForm(false);
+  togglePopWindow(false);
+});
+
+cancelBtn.addEventListener('click', togglePopWindow.bind(this, false));
+
+deleteBtn.addEventListener('click', () => {
+  notesData.splice(targetEditNote, 1);
+  updateLocalStorage();
+  renderMarkup();
+  togglePopWindow(false);
+  targetEditNote = undefined;
+});
 
 window.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') toggleForm(false);
+  if (e.key === 'Escape') {
+    toggleForm(false);
+    togglePopWindow(false);
+  }
 });
 
 form.addEventListener('submit', function (e) {

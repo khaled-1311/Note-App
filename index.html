@@ -66,8 +66,10 @@
         </div>
       </main>
     </div>
+
     <!-- overlay block -->
     <div class="overlay"></div>
+
     <!-- form block -->
     <form class="form">
       <div class="form__heading-box">
@@ -102,6 +104,27 @@
         <button class="form__button" type="submit">Update Note</button>
       </div>
     </form>
+
+    <!-- delete pop window -->
+    <div class="pop">
+      <div class="pop__icon">
+        <span><i class="fa-solid fa-exclamation"></i></span>
+      </div>
+      <h3 class="pop__heading">You are about to delete note</h3>
+      <p class="pop__paragraph">
+        Are you sure you want to delete this note? this action cannot be undone.
+      </p>
+      <div class="pop__btn-box">
+        <button type="button" class="pop__button pop__button--cancel">
+          <span><i class="fa-solid fa-xmark"></i></span>
+          <span>Cancel</span>
+        </button>
+        <button type="button" class="pop__button pop__button--delete">
+          <span><i class="fa-regular fa-trash-can"></i></span>
+          <span>Delete</span>
+        </button>
+      </div>
+    </div>
     <script src="src/index.js"></script>
   </body>
 </html>
